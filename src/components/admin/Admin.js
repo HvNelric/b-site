@@ -13,13 +13,11 @@ const Admin = () => {
     const { userState } = context
     console.log('STATE : ', userState.isLog)
 
-    // useEffect(() => {
+    useEffect(() => {
       
-    //     if (!userState.isLog) {
-    //         navigate('/login')
-    //     }
+        window.scrollTo(0, 0)
 
-    // }, [])
+    }, [])
     
     const components = userState.isLog
     ? (
