@@ -1,0 +1,115 @@
+.b-gestion-actus {
+	.gestion-formulaire {
+
+        .form-date {
+            width: 150px;
+        }
+
+		button {
+			background: var(--dgrey);
+
+			&:hover {
+				background: var(--red);
+			}
+		}
+	}
+
+	.gestion-elem {
+		padding: 5rem 0 0 0;
+        margin: 0 -15px;
+
+		.elem-col {
+			margin-bottom: 30px;
+            padding-left: 15px;
+            padding-right: 15px;
+
+			.actu-wrapper {
+				background: white;
+				transition: 0.3s ease;
+				border-radius: 5px;
+
+				.top {
+					border-radius: 5px 5px 0 0;
+					overflow: hidden;
+					position: relative;
+                    min-height: 100px;
+
+					.delete-btn {
+						padding: 1rem;
+						background: red;
+						position: absolute;
+						top: 1rem;
+						right: 1rem;
+						border-radius: 50%;
+						width: 50px;
+						height: 50px;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						cursor: pointer;
+
+						i {
+							font-size: 2rem;
+							transition: 0.3s ease-out;
+						}
+
+						&:hover i {
+							transform: scale(1.5) rotate(90deg);
+							transition: 0.3s ease-in;
+						}
+					}
+				}
+
+				.middle {
+					padding: 2rem 1rem 1rem 1rem;
+					position: relative;
+
+					h4 {
+						background: var(--red);
+						padding: 5px 1rem;
+						position: absolute;
+						top: 0;
+						left: -1rem;
+						transform: translateY(-50%);
+						margin: 0;
+						max-height: 43px;
+						width: 90%;
+						overflow: hidden;
+					}
+
+					.date {
+						color: #939090;
+						text-align: right;
+						margin: 1rem 0;
+					}
+
+					.desc {
+						max-height: 145px;
+						overflow: hidden;
+						color: black;
+					}
+				}
+
+				.bottom {
+					height: 6px;
+					margin-top: 1rem;
+					border-radius: 0 0 5px 5px;
+				}
+
+                img {
+                    transition: .3s ease-out;
+                }
+
+                &:hover img {
+                    transform: scale(1.1);
+                    transition: .3s ease-in;
+                }
+
+				&:hover .bottom {
+					background: var(--red);
+					transition: 0.3s ease;
+				}
+			}
+		}
+	}
+}

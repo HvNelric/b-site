@@ -1,0 +1,80 @@
+
+.actus-elem {
+	margin: 0 -30px;
+
+	.elem-col {
+		margin-bottom: 40px;
+		padding-left: 30px;
+		padding-right: 30px;
+
+		.actu-wrapper {
+			background: var(--grey);
+			transition: 0.3s ease;
+			border-radius: 5px;
+
+			.top {
+				border-radius: 5px 5px 0 0;
+				overflow: hidden;
+				position: relative;
+
+				.img-wrapper {
+					height: 180px;
+				}
+			}
+
+			.middle {
+				padding: 2rem 1rem 1rem 1rem;
+				position: relative;
+
+				h4 {
+					background: var(--red);
+					padding: 5px 1rem;
+					position: absolute;
+					top: 0;
+					left: -1rem;
+					transform: translateY(-50%);
+					margin: 0;
+					max-height: 50px;
+					width: 90%;
+					overflow: hidden;
+                    color: black;
+				}
+
+				.date {
+					color: #e1e1e1;
+					text-align: right;
+					margin: 1rem 0;
+				}
+
+				.desc {
+					height: 86px;
+					overflow: hidden;
+					color: white;
+				}
+			}
+
+			.bottom {
+				height: 6px;
+				margin-top: 1rem;
+				border-radius: 0 0 5px 5px;
+			}
+
+			img {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				transition: 0.3s ease-out;
+			}
+
+			&:hover img {
+				transform: scale(1.1) translateY(-50%);
+				transition: 0.3s ease-in;
+			}
+
+			&:hover .bottom {
+				background: var(--red);
+				transition: 0.3s ease;
+			}
+		}
+	}
+}

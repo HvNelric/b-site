@@ -1,0 +1,33 @@
+.b-nav-container {
+    position: fixed;
+    top: 0;
+    background: rgba(0,0,0,.85);
+    width: 100%;
+
+    .nav-link {
+        color: white;
+
+        .user-info {
+            color: white;
+        }
+
+        &:hover .user-info {
+            color: var(--lgrey);
+        }
+    }
+}
+
+
+
+@media (min-width: 768px){
+    .b-nav {
+        display: flex;
+        justify-content: flex-end;
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+        }
+    }
+}

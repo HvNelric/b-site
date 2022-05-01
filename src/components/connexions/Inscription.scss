@@ -1,0 +1,16 @@
+.ins-container {
+    background: var(--dgrey);
+    height: 100vh;
+    position: relative;
+
+    .ins-box {
+        width: 400px;
+        background: white;
+        padding: 2rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 5px;
+    }
+}
