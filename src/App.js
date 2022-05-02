@@ -21,7 +21,6 @@ function App() {
 
     useEffect(() => {
         const authCange = onAuthStateChanged(auth, (user) => {
-            console.log('HOme')
             if (user) {
                 setLog({
                     ...userState,

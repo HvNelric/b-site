@@ -12,6 +12,8 @@ const GestionActus = () => {
     const refDate = useRef();
     const refDesc = useRef();
     const refFile = useRef();
+    const refExt = useRef();
+    const refTruncate = useRef();
 
     const db = getDatabase();
     const dbRef = ref(getDatabase());
@@ -27,7 +29,7 @@ const GestionActus = () => {
         const storageRef = fireRef(storage, `actus/${file.name}`);
 
         const formatDate = new Date(refDate.current.value);
-        const newDate = `${formatDate.getDate() < 9 && '0' + formatDate.getDate()}-${(formatDate.getMonth() + 1) < 9 && '0' + formatDate.getMonth()}-${formatDate.getFullYear()}`
+        const newDate = `${formatDate.getDate() < 9 ? '0' + formatDate.getDate() : formatDate.getDate()}-${(formatDate.getMonth() + 1) < 9 ? '0' + formatDate.getMonth() : formatDate.getMonth()}-${formatDate.getFullYear()}`
 
         uploadBytes(storageRef, file)
             .then((snapshot) => {
@@ -41,7 +43,8 @@ const GestionActus = () => {
                         date: newDate,//refDate.current.value,
                         description: refDesc.current.value,
                         imgUrl: imgUrl,
-                        fileName: file.name
+                        fileName: file.name,
+                        ext: refExt.current.value
                     }).then(() => {
                         goGet();
                         e.target.reset();
@@ -88,30 +91,6 @@ const GestionActus = () => {
         });
     }
 
-    // const uploadImg = e => {
-    //     e.preventDefault();
-
-    //     //const storage = firebaseStorage();
-    //     const file = e.target[0].files[0];
-    //     const storageRef = fireRef(storage, `actus/ZO.jpg`);
-
-    //     uploadBytes(storageRef, file)
-    //         .then((snapshot) => {
-    //             //console.log('Uploaded a blob or file!', snapshot);
-    //             ///////////////////
-    //             getDownloadURL(fireRef(storage, `actus/${file.name}`))
-    //                 .then((url) => {
-    //                     //console.log('URL', url)
-    //                 })
-    //                 .catch((error) => {
-    //                     // Handle any errors
-    //                 });
-    //             //////////////////
-    //         }).catch(error => {
-    //             console.log('ERROR : ', error)
-    //         });
-    // }
-
     useEffect(() => {
         goGet()
     }, []);
@@ -139,6 +118,10 @@ const GestionActus = () => {
                                 <label htmlFor="desc" className="form-label">Description</label>
                                 <textarea ref={refDesc} className="form-control" id="desc" rows="8"></textarea>
                             </div>
+                            <div className="mb-3 form-elem">
+                                <label htmlFor="ext-link" className="form-label">Lien externe (optionnel)</label>
+                                <input ref={refExt} type="text" className="form-control" id="ext-link" />
+                            </div>
                             <button className="btn b-btn"><i className="fa-solid fa-paper-plane"></i></button>
                         </form>
                     </div>
@@ -146,7 +129,7 @@ const GestionActus = () => {
                 <div className="row gestion-elem">
                     {
                         Object.keys(data).map(key => (
-                            <div className='col-12 col-md-3 elem-col' key={key}>
+                            <div className='col-12 col-md-4 elem-col' key={key}>
                                 <div className='actu-wrapper'>
                                     <div className="top">
                                         <div className="img-wrapper">
@@ -157,15 +140,10 @@ const GestionActus = () => {
                                     <div className="middle">
                                         <h4>{data[key].title}</h4>
                                         <div className="date">{data[key].date}</div>
-                                        {/* <div className="desc">{data[key].description}</div> */}
-                                        <TextTruncate
-                                            className="desc"
-                                            line={4}
-                                            element="div"
-                                            truncateText="…"
-                                            text={data[key].description}
-                                            textTruncateChild={<a href="#">Read on</a>}
-                                        />
+                                        <div className="desc">{data[key].description}</div>
+                                        {
+                                            (data[key].ext && data[key].ext !== '') && <a className='savoir-plus' href={data[key].ext} target="_blank">Vers l'article</a>
+                                        }
                                     </div>
                                     <div className="bottom"></div>
                                 </div>

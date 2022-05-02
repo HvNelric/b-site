@@ -9,9 +9,9 @@ const Admin = () => {
     const context = useContext(MyContext)
     const { userState } = context
 
-    useEffect(() => {
-        const goTo = window.scrollTo(0, 0)
-    }, [])
+    // useEffect(() => {
+    //     const goTo = window.scrollTo(0, 0)
+    // }, [])
     
     const components = userState.isLog
     ? (

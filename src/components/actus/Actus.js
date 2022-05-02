@@ -7,6 +7,7 @@ const Actus = () => {
 
     const dbRef = ref(getDatabase());
     const [actus, setActus] = useState({})
+    const [modalActus, setModalActus] = useState(false)
 
     const goGet = () => {
         get(
@@ -23,6 +24,16 @@ const Actus = () => {
         });
     }
 
+    const openModal = e => {
+        setModalActus(!modalActus)
+        document.body.style.overflow = 'hidden';
+    }
+
+    const closeModal = e => {
+        setModalActus(!modalActus)
+        document.body.style.overflow = 'unset';
+    }
+
     useEffect(() => {
         goGet()
     }, [])
@@ -34,29 +45,49 @@ const Actus = () => {
                 <div className="row actus-elem">
                     {
                         Object.keys(actus).map(key => (
-                            <div className='col-12 col-md-4 elem-col' key={key}>
-                                <div className='actu-wrapper'>
-                                    <div className="top">
-                                        <div className="img-wrapper">
-                                            <img src={actus[key].imgUrl} alt="car" />
+                            <>
+                                <div className='col-12 col-md-4 elem-col' key={key}>
+                                    <div className='actu-wrapper'>
+                                        <div className="top">
+                                            <div className="img-wrapper">
+                                                <img src={actus[key].imgUrl} alt={actus[key].title} />
+                                            </div>
                                         </div>
+                                        <div className="middle">
+                                            <h4>{actus[key].title}</h4>
+                                            <div className="date">{actus[key].date}</div>
+                                            {/* <div className="desc">{actus[key].description}</div> */}
+                                            <TextTruncate
+                                                className="desc"
+                                                line={4}
+                                                element="div"
+                                                truncateText="…"
+                                                text={actus[key].description}
+                                                textTruncateChild={
+                                                    (actus[key].ext && actus[key].ext !== '') ? <a className='savoir-plus' href={actus[key].ext} target="_blank">Vers l'article</a> : <a className='savoir-plus' onClick={openModal}>Lire plus</a>
+                                                }
+                                            />
+                                        </div>
+                                        <div className="bottom"></div>
                                     </div>
-                                    <div className="middle">
-                                        <h4>{actus[key].title}</h4>
-                                        <div className="date">{actus[key].date}</div>
-                                        {/* <div className="desc">{actus[key].description}</div> */}
-                                        <TextTruncate
-                                            className="desc"
-                                            line={4}
-                                            element="div"
-                                            truncateText="…"
-                                            text={actus[key].description}
-                                            textTruncateChild={<a href="#">Lire plus</a>}
-                                        />
-                                    </div>
-                                    <div className="bottom"></div>
                                 </div>
-                            </div>
+                                {
+                                    modalActus && (
+                                        <div className="modal-container" onClick={closeModal}>
+                                            <div className="modal-wrapper">
+                                                <div className="img-wrapper">
+                                                    <img src={actus[key].imgUrl} alt={actus[key].title} />
+                                                </div>
+                                                <div className="middle">
+                                                    <h4 className='modal-title'>{actus[key].title}</h4>
+                                                    <div className="modal-date">{actus[key].date}</div>
+                                                    <div className="modal-desc">{actus[key].description}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            </>
                         ))
                     }
                 </div>
