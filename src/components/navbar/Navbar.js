@@ -1,10 +1,11 @@
 import { signOut } from 'firebase/auth'
 import React, { useContext } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { auth } from '../../firebase/Firebase'
 import { getUser } from '../../firebase/UserInfo'
 import { MyContext } from '../context/MyContext'
 import './Navbar.scss'
+import { HashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
 
@@ -55,6 +56,14 @@ const Navbar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse b-nav" id="navbarSupportedContent">
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <HashLink className="nav-link active" to='/#actus'>Actualités</HashLink>
+                        </li>
+                        <li className="nav-item">
+                            <HashLink className="nav-link active" to='/#equipe'>Equipe</HashLink>
+                        </li>
+                    </ul>
                     <ul className="navbar-nav">
                         {html}
                     </ul>

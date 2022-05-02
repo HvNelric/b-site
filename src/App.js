@@ -34,8 +34,7 @@ function App() {
     }, [])
 
     return (
-        <MyContext.Provider value={{ userState, setLog }}>
-            
+        <MyContext.Provider value={{ userState, setLog }}> 
             <Routes>
                 <Route path='/' element={<Landing />} />
                 <Route path='/inscription' element={<Inscription />} />

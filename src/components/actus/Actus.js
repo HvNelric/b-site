@@ -27,7 +27,7 @@ const Actus = () => {
     }, [])
 
     return (
-        <div className="container-fluid b-dg-container b-actus">
+        <div id='actus' className="container-fluid b-dg-container b-actus">
             <div className="container">
                 <h2 className='text-center'>Actualités</h2>
                 <div className="row actus-elem">
