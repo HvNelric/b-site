@@ -103,3 +103,24 @@ h4 {
         transition: .3s ease;
     }
 }
+
+.b-close-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: red;
+
+    i {
+        font-size: 1rem;
+        color: white;
+        transition: .5s ease-out;
+    }
+
+    &:hover i {
+        transform: scale(1.5) rotate(180deg);
+        transition: .5s ease-in;
+    }
+}
