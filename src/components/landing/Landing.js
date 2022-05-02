@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import imgLanding from '../../img/img41.jpg'
 import Actus from '../actus/Actus';
 import Equipe from '../equipe/Equipe';
