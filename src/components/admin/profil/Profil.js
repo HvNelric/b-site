@@ -14,22 +14,12 @@ const Profil = () => {
     const storage = getStorage();
     const db = getDatabase();
 
-    const refFile = useRef()
-
     const [user, setUser] = useState({
         pseudo: '',
         img: ''
     })
 
     const { pseudo, img } = user
-
-    const handleFile = e => {
-        setUser({ ...user, img: e.target.value })
-    }
-
-    const handlePseudo = e => {
-        setUser({ ...user, pseudo: e.target.value })
-    }
 
     const submitImg = e => {
         e.preventDefault()
@@ -57,7 +47,8 @@ const Profil = () => {
                         setLog({
                             ...userState,
                             info: auth.currentUser
-                        })
+                        });
+                        e.target.reset()
                     }).catch((error) => {
                         console.log('PROFILE ERROR', error)
                     });
@@ -75,12 +66,14 @@ const Profil = () => {
         e.preventDefault()
 
         updateProfile(auth.currentUser, {
-            displayName: pseudo
+            displayName: e.target[0].value
         }).then(() => {
             setLog({
                 ...userState,
                 info: auth.currentUser
             })
+            console.log('etarget', e.target[0].value)
+            e.target.reset();
         }).catch((error) => {
             console.log('PROFILE ERROR', error)
         });
@@ -111,7 +104,7 @@ const Profil = () => {
                         <form onSubmit={submitImg}>
                             <div className="mb-3 form-elem">
                                 <label htmlFor="img" className="form-label">Titre</label>
-                                <input ref={refFile} type="file" className="form-control" id="img" required />
+                                <input type="file" className="form-control" id="img" required />
                             </div>
                             <button className="btn b-btn"><i className="fa-solid fa-paper-plane"></i></button>
                         </form>
@@ -119,7 +112,7 @@ const Profil = () => {
                         <form onSubmit={submitPseudo}>
                             <div className="mb-3 form-elem">
                                 <label htmlFor="pseudo" className="form-label">Modifier le pseudo</label>
-                                <input onChange={handlePseudo} type="text" className="form-control" id="pseudo" required />
+                                <input type="text" className="form-control" id="pseudo" required />
                             </div>
                             <button className="btn b-btn"><i className="fa-solid fa-paper-plane"></i></button>
                         </form>

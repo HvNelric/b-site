@@ -3,7 +3,8 @@ import { getDatabase, ref, set, get } from "firebase/database";
 import { getStorage, uploadBytes, ref as fireRef, getDownloadURL, deleteObject } from "firebase/storage";
 import 'firebase/storage'
 import 'firebase/firestore';
-import './GestionActus.scss'
+import './GestionActus.scss';
+import TextTruncate from 'react-text-truncate';
 
 const GestionActus = () => {
 
@@ -25,6 +26,9 @@ const GestionActus = () => {
         //console.log('file', file);
         const storageRef = fireRef(storage, `actus/${file.name}`);
 
+        const formatDate = new Date(refDate.current.value);
+        const newDate = `${formatDate.getDate() < 9 && '0' + formatDate.getDate()}-${(formatDate.getMonth() + 1) < 9 && '0' + formatDate.getMonth()}-${formatDate.getFullYear()}`
+
         uploadBytes(storageRef, file)
             .then((snapshot) => {
                 //console.log('Uploaded a blob or file!', snapshot);
@@ -34,16 +38,13 @@ const GestionActus = () => {
                     const imgUrl = url;
                     set(ref(db, 'actus/' + Date.now()), {
                         title: refTitle.current.value,
-                        date: refDate.current.value,
+                        date: newDate,//refDate.current.value,
                         description: refDesc.current.value,
                         imgUrl: imgUrl,
                         fileName: file.name
                     }).then(() => {
                         goGet();
-                        refFile.current.value = '';
-                        refTitle.current.value = '';
-                        refDate.current.value = '';
-                        refDesc.current.value = '';
+                        e.target.reset();
                     });
                 })
                 .catch((error) => {
@@ -87,29 +88,29 @@ const GestionActus = () => {
         });
     }
 
-    const uploadImg = e => {
-        e.preventDefault();
+    // const uploadImg = e => {
+    //     e.preventDefault();
 
-        //const storage = firebaseStorage();
-        const file = e.target[0].files[0];
-        const storageRef = fireRef(storage, `actus/ZO.jpg`);
+    //     //const storage = firebaseStorage();
+    //     const file = e.target[0].files[0];
+    //     const storageRef = fireRef(storage, `actus/ZO.jpg`);
 
-        uploadBytes(storageRef, file)
-            .then((snapshot) => {
-                //console.log('Uploaded a blob or file!', snapshot);
-                ///////////////////
-                getDownloadURL(fireRef(storage, `actus/${file.name}`))
-                    .then((url) => {
-                        //console.log('URL', url)
-                    })
-                    .catch((error) => {
-                        // Handle any errors
-                    });
-                //////////////////
-            }).catch(error => {
-                console.log('ERROR : ', error)
-            });
-    }
+    //     uploadBytes(storageRef, file)
+    //         .then((snapshot) => {
+    //             //console.log('Uploaded a blob or file!', snapshot);
+    //             ///////////////////
+    //             getDownloadURL(fireRef(storage, `actus/${file.name}`))
+    //                 .then((url) => {
+    //                     //console.log('URL', url)
+    //                 })
+    //                 .catch((error) => {
+    //                     // Handle any errors
+    //                 });
+    //             //////////////////
+    //         }).catch(error => {
+    //             console.log('ERROR : ', error)
+    //         });
+    // }
 
     useEffect(() => {
         goGet()
@@ -156,7 +157,15 @@ const GestionActus = () => {
                                     <div className="middle">
                                         <h4>{data[key].title}</h4>
                                         <div className="date">{data[key].date}</div>
-                                        <div className="desc">{data[key].description}</div>
+                                        {/* <div className="desc">{data[key].description}</div> */}
+                                        <TextTruncate
+                                            className="desc"
+                                            line={4}
+                                            element="div"
+                                            truncateText="…"
+                                            text={data[key].description}
+                                            textTruncateChild={<a href="#">Read on</a>}
+                                        />
                                     </div>
                                     <div className="bottom"></div>
                                 </div>

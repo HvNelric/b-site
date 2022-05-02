@@ -1,6 +1,7 @@
 import { get, ref, getDatabase, child } from 'firebase/database';
 import React, { useEffect, useState } from 'react';
 import './Actus.scss';
+import TextTruncate from 'react-text-truncate';
 
 const Actus = () => {
 
@@ -12,7 +13,7 @@ const Actus = () => {
             dbRef, '/actus'
         ).then((snapshot) => {
             if (snapshot.exists()) {
-                console.log('SNAP : ', snapshot.val().actus)
+                //console.log('SNAP : ', snapshot.val().actus)
                 setActus(snapshot.val().actus)
             } else {
                 console.log("No actus available");
@@ -43,7 +44,15 @@ const Actus = () => {
                                     <div className="middle">
                                         <h4>{actus[key].title}</h4>
                                         <div className="date">{actus[key].date}</div>
-                                        <div className="desc">{actus[key].description}</div>
+                                        {/* <div className="desc">{actus[key].description}</div> */}
+                                        <TextTruncate
+                                            className="desc"
+                                            line={4}
+                                            element="div"
+                                            truncateText="…"
+                                            text={actus[key].description}
+                                            textTruncateChild={<a href="#">Lire plus</a>}
+                                        />
                                     </div>
                                     <div className="bottom"></div>
                                 </div>
