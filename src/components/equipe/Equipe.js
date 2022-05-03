@@ -35,7 +35,7 @@ const Equipe = () => {
 
     return (
         <div id="equipe" className="container-fluid b-g-container b-equipe">
-
+            <h2>L'équipe</h2>
             <div className="row">
                 <div className="col-12 col-md-3 user-col">
                     <div className="user-wrapper">

@@ -63,6 +63,9 @@ const Navbar = () => {
                         <li className="nav-item">
                             <HashLink className="nav-link active" to='/#equipe'>Equipe</HashLink>
                         </li>
+                        <li className="nav-item">
+                            <HashLink className="nav-link active" to='/#contact'>Contact</HashLink>
+                        </li>
                     </ul>
                     <ul className="navbar-nav">
                         {html}

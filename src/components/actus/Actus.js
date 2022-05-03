@@ -76,6 +76,7 @@ const Actus = () => {
         <>
             <div id='actus' className="container-fluid b-dg-container b-actus">
                 <div className="container">
+                    <h2>Les dernières actualités</h2>
                     <div className="row actus-elem">
                         {
                             Object.keys(actus).map(key => (
@@ -96,7 +97,7 @@ const Actus = () => {
                                                 truncateText="…"
                                                 text={actus[key].description}
                                                 textTruncateChild={
-                                                    (actus[key].ext && actus[key].ext !== '') ? <a className='savoir-plus' href={actus[key].ext}target="_blank">Vers l'article</a> : <span className='savoir-plus' onClick={() => openModal(actus[key].imgUrl, actus[key].title, actus[key].date, actus[key].description)}>Lire plus</span>
+                                                    (actus[key].ext && actus[key].ext !== '') ? <span className='savoir-plus' href={actus[key].ext}target="_blank">Vers l'article</span> : <span className='savoir-plus' onClick={() => openModal(actus[key].imgUrl, actus[key].title, actus[key].date, actus[key].description)}>Lire plus</span>
                                                 }
                                             />
                                         </div>
