@@ -23,7 +23,7 @@ const Formulaire = () => {
     };
 
     return (
-        <div className='container-fluid b-lg-container form-container'>
+        <div id="contact" className='container-fluid b-lg-container form-container'>
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-4 left-col">
@@ -37,6 +37,7 @@ const Formulaire = () => {
                             <div className="mb-3 form-elem">
                                 <label htmlFor="form-email" className="form-label">Votre email</label>
                                 <input ref={refMail} name="from_email" type="email" className="form-control" id="form-mail" required />
+                                <div className="form-text input-obligatoire">Ce champs est obligatoire.</div>
                             </div>
                             <div className="mb-3 form-elem">
                                 <label htmlFor="nom" className="form-label">Votre Prénom Nom (optionnel)</label>
@@ -49,8 +50,9 @@ const Formulaire = () => {
                             <div className="mb-3 form-elem">
                                 <label htmlFor="comment" className="form-label">Votre commentaire</label>
                                 <textarea ref={refComment} name="message" className="form-control" id="comment" rows="8" required></textarea>
+                                <div className="form-text input-obligatoire">Ce champs est obligatoire.</div>
                             </div>
-                            <button className="btn b-btn"><i className="fa-solid fa-paper-plane"></i></button>
+                            <button className="btn mt-2 b-btn"><i className="fa-solid fa-paper-plane"></i></button>
                         </form>
                     </div>
                 </div>

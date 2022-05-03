@@ -5,14 +5,15 @@
     width: 100vw;
 
     .nav-link {
-        color: white;
+        color: white !important;
 
         .user-info {
             color: white;
         }
 
-        &:hover .user-info {
-            color: var(--lgrey);
+        &:hover .user-info,
+        &:hover {
+            color: var(--lgrey) !important;
         }
     }
 }

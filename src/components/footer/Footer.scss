@@ -20,6 +20,17 @@ footer {
 
         i {
             color: white;
+            transition: .3s ease;
+        }
+
+
+        &:hover {
+            border-color: var(--red);
+            
+            i {
+                color: var(--red);
+                transition: .3s ease;
+            }
         }
     }
 }

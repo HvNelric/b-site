@@ -31,11 +31,11 @@ const Equipe = () => {
         goGet()
     }, [])
 
-    console.log('equipe', user['user1'])
+    //console.log('equipe', user['user1'])
 
     return (
         <div id="equipe" className="container-fluid b-g-container b-equipe">
-
+            <h2>L'équipe</h2>
             <div className="row">
                 <div className="col-12 col-md-3 user-col">
                     <div className="user-wrapper">
@@ -44,11 +44,11 @@ const Equipe = () => {
                         </div>
                         <div className="equipe-content">
                             <h3>Marlène</h3>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Enseignante depuis 11 ans</li>
-                                <li class="list-group-item">EFormatrice BAFM d’enseignants de la conduite et de la sécurité routière depuis 4 ans</li>
-                                <li class="list-group-item">Animatrice sécurité routière</li>
-                                <li class="list-group-item">Jury aux examens d’enseignants auto-école</li>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">Enseignante depuis 11 ans</li>
+                                <li className="list-group-item">EFormatrice BAFM d’enseignants de la conduite et de la sécurité routière depuis 4 ans</li>
+                                <li className="list-group-item">Animatrice sécurité routière</li>
+                                <li className="list-group-item">Jury aux examens d’enseignants auto-école</li>
                             </ul>
                         </div>
                     </div>
@@ -60,11 +60,11 @@ const Equipe = () => {
                         </div>
                         <div className="equipe-content">
                             <h3>Anthony</h3>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Dirigeant d’auto-école depuis 7 ans</li>
-                                <li class="list-group-item">Enseignant depuis 12 ans</li>
-                                <li class="list-group-item">Animateur sécurité routière</li>
-                                <li class="list-group-item">Jury aux examens d’enseignants auto-école</li>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">Dirigeant d’auto-école depuis 7 ans</li>
+                                <li className="list-group-item">Enseignant depuis 12 ans</li>
+                                <li className="list-group-item">Animateur sécurité routière</li>
+                                <li className="list-group-item">Jury aux examens d’enseignants auto-école</li>
                             </ul>
                         </div>
                     </div>
@@ -76,8 +76,8 @@ const Equipe = () => {
                         </div>
                         <div className="equipe-content">
                             <h3>Des intervenants</h3>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">... en lien avec la sécurité routière (Pompiers, gendarmes, psychologue, etc.)</li>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">... en lien avec la sécurité routière (Pompiers, gendarmes, psychologue, etc.)</li>
                             </ul>
                         </div>
                     </div>
@@ -88,8 +88,8 @@ const Equipe = () => {
                             <img src={user['user4'].imgUrl} alt="equipe" />
                         </div>
                         <div className="equipe-content">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Un secrétariat pour répondre à vos besoins</li>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">Un secrétariat pour répondre à vos besoins</li>
                             </ul>
                         </div>
                     </div>
