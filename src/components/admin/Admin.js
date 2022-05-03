@@ -3,6 +3,7 @@ import { MyContext } from '../context/MyContext';
 import './Admin.scss'
 import Profil from './profil/Profil';
 import GestionActus from './gestion.actus/GestionActus';
+import GestionEquipe from './gestion.equipe/GestionEquipe';
 
 const Admin = () => {
 
@@ -19,6 +20,7 @@ const Admin = () => {
             <h2>ADMIN</h2>
             <Profil />
             <GestionActus />
+            <GestionEquipe />
         </> 
     ): (
         <h2>Connectez-vous</h2>
