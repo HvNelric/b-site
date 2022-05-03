@@ -1,13 +1,15 @@
-import { get, ref, getDatabase } from 'firebase/database';
-import React, { useEffect, useRef, useState } from 'react';
+import { ref, getDatabase, query, orderByChild, orderByValue, onValue } from 'firebase/database';
+import React, { useEffect, useState } from 'react';
 import './Actus.scss';
 import TextTruncate from 'react-text-truncate';
 import Modal from '../modal/Modal';
 
 const Actus = () => {
 
-    const dbRef = ref(getDatabase());
-    const refModal = useRef();
+    //const dbRef = ref(getDatabase());
+    const db = getDatabase();
+
+    //const refModal = useRef();
 
     const [actus, setActus] = useState({})
     const [modalActus, setModalActus] = useState({
@@ -21,18 +23,32 @@ const Actus = () => {
     const { open, img, title, date, desc } = modalActus;
 
     const goGet = () => {
-        get(
-            dbRef, '/actus'
-        ).then((snapshot) => {
-            if (snapshot.exists()) {
-                //console.log('SNAP : ', snapshot.val().actus)
-                setActus(snapshot.val().actus)
-            } else {
-                console.log("No actus available");
-            }
-        }).catch((error) => {
-            console.error(error);
+
+        const actusRef = query(ref(db, 'actus'), orderByValue('date'));
+        onValue(actusRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log('SNAP : ', data)
+            setActus(data)    
         });
+
+        // get(
+        //     dbRef, 'actus'
+        // ).then((snapshot) => {
+        //     if (snapshot.exists()) {
+        //         console.log('SNAP : ', snapshot.val().actus)
+
+        //         //////////////////////////////////////////////
+
+                
+        //         //////////////////////////////////////////////
+
+        //         setActus(snapshot.val().actus)
+        //     } else {
+        //         console.log("No actus available");
+        //     }
+        // }).catch((error) => {
+        //     console.error(error);
+        // });
     }
 
     const openModal = (img, title, date, desc) => {
@@ -71,6 +87,8 @@ const Actus = () => {
             document.body.style.overflow = 'unset';
         }
     }, [])
+
+    console.log('ACTUS : ', actus)
 
     return (
         <>

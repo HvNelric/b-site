@@ -58,13 +58,13 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse b-nav" id="navbarSupportedContent">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <HashLink className="nav-link active" to='/#actus'>Actualités</HashLink>
+                            <HashLink className="nav-link" to='/#actus'>Actualités</HashLink>
                         </li>
                         <li className="nav-item">
-                            <HashLink className="nav-link active" to='/#equipe'>Equipe</HashLink>
+                            <HashLink className="nav-link" to='/#equipe'>Equipe</HashLink>
                         </li>
                         <li className="nav-item">
-                            <HashLink className="nav-link active" to='/#contact'>Contact</HashLink>
+                            <HashLink className="nav-link" to='/#contact'>Contact</HashLink>
                         </li>
                     </ul>
                     <ul className="navbar-nav">
