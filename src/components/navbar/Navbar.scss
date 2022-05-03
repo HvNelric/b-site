@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     background: rgba(0,0,0,.85);
-    width: 100%;
+    width: 100vw;
 
     .nav-link {
         color: white;
@@ -16,8 +16,6 @@
         }
     }
 }
-
-
 
 @media (min-width: 768px){
     .b-nav {

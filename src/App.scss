@@ -17,7 +17,7 @@
     // --red: #F73859;
     --dgrey: #3A3845;
     --grey: #826F66;
-    --lgrey: #C69B7B;
+    --lgrey: rgba(198, 155, 123, 1);
     --red: #F7CCAC;
     font-size: 14px;
     --pf: 'PlayBold';
@@ -28,6 +28,7 @@
 body {
     font-family: var(--sr);
     background: black;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -96,6 +97,10 @@ h4 {
     transition: .3s ease;
     padding-left: 2rem;
     padding-right: 2rem;
+
+    i {
+        color: white;
+    }
 
     &:hover {
         background: var(--red);

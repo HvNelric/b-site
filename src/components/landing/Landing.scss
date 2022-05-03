@@ -19,6 +19,34 @@
         // }
     }
 
+    .landing-etape {
+        position: absolute;
+        bottom: 25%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 40%;
+
+        i {
+            color: white;
+            font-size: 1rem;
+        }
+
+        .elem {
+            background: rgba(198, 155, 123, .5);
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
 }
 
 @media (min-width: 576px) {

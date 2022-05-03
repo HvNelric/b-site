@@ -122,7 +122,7 @@ const GestionActus = () => {
                                 <label htmlFor="ext-link" className="form-label">Lien externe (optionnel)</label>
                                 <input ref={refExt} type="text" className="form-control" id="ext-link" />
                             </div>
-                            <button className="btn b-btn"><i className="fa-solid fa-paper-plane"></i></button>
+                            <button className="btn b-btn"><i className="fa-solid fa-arrow-right"></i></button>
                         </form>
                     </div>
                 </div>

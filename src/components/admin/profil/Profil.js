@@ -14,12 +14,12 @@ const Profil = () => {
     const storage = getStorage();
     const db = getDatabase();
 
-    const [user, setUser] = useState({
-        pseudo: '',
-        img: ''
-    })
+    // const [user, setUser] = useState({
+    //     pseudo: '',
+    //     img: ''
+    // })
 
-    const { pseudo, img } = user
+    // const { pseudo, img } = user
 
     const submitImg = e => {
         e.preventDefault()
@@ -106,7 +106,7 @@ const Profil = () => {
                                 <label htmlFor="img" className="form-label">Titre</label>
                                 <input type="file" className="form-control" id="img" required />
                             </div>
-                            <button className="btn b-btn"><i className="fa-solid fa-paper-plane"></i></button>
+                            <button className="btn b-btn"><i className="fa-solid fa-arrow-right"></i></button>
                         </form>
 
                         <form onSubmit={submitPseudo}>
@@ -114,7 +114,7 @@ const Profil = () => {
                                 <label htmlFor="pseudo" className="form-label">Modifier le pseudo</label>
                                 <input type="text" className="form-control" id="pseudo" required />
                             </div>
-                            <button className="btn b-btn"><i className="fa-solid fa-paper-plane"></i></button>
+                        <button className="btn b-btn"><i className="fa-solid fa-arrow-right"></i></button>
                         </form>
                     </div>
                 </div>
