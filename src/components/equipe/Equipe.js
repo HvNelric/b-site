@@ -2,7 +2,7 @@ import { get, getDatabase, onValue, ref as dataRef } from 'firebase/database';
 import React, { useEffect, useState } from 'react';
 import './Equipe.scss';
 
-const Equipe = () => {
+const Equipe = ({offset, isdesktop}) => {
 
     const db = getDatabase();
     const [user, setUser] = useState({
@@ -41,13 +41,13 @@ const Equipe = () => {
         goGet()
     }, [])
 
-    //console.log('equipe', user['user1'])
+    console.log('equipe desk', isdesktop)
 
     return (
         <div id="equipe" className="container-fluid b-g-container b-equipe">
-            <h2>L'équipe</h2>
+            <h2 style={{ transform: `translateY(-${(offset - 2400) * 0.12}px)` }}>L'équipe</h2>
             <div className="row">
-                <div className="col-12 col-md-3 user-col">
+                <div className="col-12 col-md-3 user-col" style={isdesktop ? { transform: `translateY(-${(offset - 2400) * 0.1}px)` } : {transform: 'none'}}>
                     <div className="user-wrapper">
                         <div className="user-img-wrapper">
                             <img src={user['user1'].imgUrl} alt="equipe" />
@@ -63,7 +63,7 @@ const Equipe = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-12 col-md-3 user-col">
+                <div className="col-12 col-md-3 user-col" style={isdesktop ? { transform: `translateY(${(offset - 2400) * 0.1}px)` } : { transform: 'none' }}>
                     <div className="user-wrapper">
                         <div className="user-img-wrapper">
                             <img src={user['user2'].imgUrl} alt="equipe" />
@@ -79,7 +79,7 @@ const Equipe = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-12 col-md-3 user-col">
+                <div className="col-12 col-md-3 user-col" style={isdesktop ? { transform: `translateY(-${(offset - 2400) * 0.1}px)` } : { transform: 'none' }}>
                     <div className="user-wrapper">
                         <div className="user-img-wrapper">
                             <img src={user['user3'].imgUrl} alt="equipe" />
@@ -92,7 +92,7 @@ const Equipe = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-12 col-md-3 user-col">
+                <div className="col-12 col-md-3 user-col" style={isdesktop ? { transform: `translateY(${(offset - 2400) * 0.1}px)` } : { transform: 'none' }}>
                     <div className="user-wrapper">
                         <div className="user-img-wrapper">
                             <img src={user['user4'].imgUrl} alt="equipe" />

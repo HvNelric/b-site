@@ -13,10 +13,16 @@
 		text-align: center;
 		line-height: 1;
 		text-shadow: 1px 1px 10px #000000;
+        margin-bottom: 50px;
 
 		// .title-bis {
 		//     font-family: var(--sr);
 		// }
+        &.active {
+            transition: 1s ease-in;
+            margin: 0;
+            opacity: 1;
+        }
 	}
 
 	.landing-etape {

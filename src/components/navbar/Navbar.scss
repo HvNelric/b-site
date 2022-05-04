@@ -4,6 +4,10 @@
     background: rgba(0,0,0,.85);
     width: 100vw;
 
+    .navbar-toggler {
+        border: none;
+    }
+
     .nav-link {
         color: white !important;
 

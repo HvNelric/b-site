@@ -42,7 +42,7 @@ function App() {
                 <Route path='/godmode' element={<Admin />} />
             </Routes>
             <Navbar />
-            {/* <Footer /> */}
+            <Footer />
         </MyContext.Provider>
     );
 }

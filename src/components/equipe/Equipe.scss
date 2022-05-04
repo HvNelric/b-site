@@ -1,15 +1,14 @@
 .b-equipe {
-
-    .row {
-        margin: 0;
-    }
+	.row {
+		margin: 0;
+	}
 	.user-col {
 		padding: 0;
 
 		.user-wrapper {
 			height: 450px;
 			position: relative;
-            transition: .3s ease;
+			transition: 0.3s ease;
 
 			.user-img-wrapper {
 				position: relative;
@@ -32,52 +31,61 @@
 				left: 50%;
 				transform: translate(-50%, -50%);
 				width: 100%;
-                margin-top: 20px;
-                opacity: 0;
-                transition: .5s ease-out;
+				margin-top: 20px;
+				opacity: 0;
+				transition: 0.5s ease-out;
 
-                h3 {
-                    color: var(--red);
-                    background: rgba(0,0,0,.75);
-                    padding: 1rem;
-                    margin-bottom: 5px;
-                    border-radius: 5px 5px 0 0;
-                }
+				h3 {
+					color: var(--red);
+					background: rgba(0, 0, 0, 0.75);
+					padding: 1rem;
+					margin-bottom: 5px;
+					border-radius: 5px 5px 0 0;
+				}
 
 				ul {
-                    //padding: 0 1rem;
+					//padding: 0 1rem;
 
 					li {
-						background: rgba(198, 155, 123, .75);
+						background: rgba(198, 155, 123, 0.75);
 						color: white;
-                        padding-top: 1rem;
-                        padding-bottom: 1rem;
-                        font-size: 1rem;
-                        border: none;
-                        margin-bottom: 2px;
+						padding-top: 1rem;
+						padding-bottom: 1rem;
+						font-size: 1rem;
+						border: none;
+						margin-bottom: 2px;
 
-                        &:last-child {
-                            border-radius: 0 0 5px 5px;
-                        }
+						&:last-child {
+							border-radius: 0 0 5px 5px;
+						}
 
-                        &:only-child {
-                            border-radius: 5px;
-                        }
+						&:only-child {
+							border-radius: 5px;
+						}
 					}
-
 				}
 			}
 
-            &:hover .equipe-content {
-                transition: .5s ease-in;
-                margin-top: 0;
-                opacity: 1;
-            }
+			&:hover .equipe-content {
+				transition: 0.5s ease-in;
+				margin-top: 0;
+				opacity: 1;
+			}
 
-            &:hover img {
-                transition: .3s ease;
-                filter: grayscale(80%);
-            }
+			&:hover img {
+				transition: 0.3s ease;
+				filter: grayscale(80%);
+			}
 		}
 	}
 }
+
+// @media (min-width: 992px) {
+// 	.b-equipe {
+// 		.row {
+// 			.user-col {
+//                 transform: translateY() !important;
+// 			}
+// 		}
+// 	}
+// }

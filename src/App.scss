@@ -1,132 +1,134 @@
 @font-face {
-    font-family: "PlayBold";
-    src: local("PlayBold"),
-    url("./fonts/PlayfairDisplay-Black.ttf") format("truetype");
+	font-family: "PlayBold";
+	src: local("PlayBold"),
+		url("./fonts/PlayfairDisplay-Black.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "SourceReg";
-    src: local("SourceReg"),
-    url("./fonts/SourceSansPro-Regular.ttf") format("truetype");
+	font-family: "SourceReg";
+	src: local("SourceReg"),
+		url("./fonts/SourceSansPro-Regular.ttf") format("truetype");
 }
 
 :root {
-    // --dgrey: #283149;
-    // --grey: #404B69;
-    // --lgrey: #DBEDF3;
-    // --red: #F73859;
-    --dgrey: #3A3845;
-    --grey: #826F66;
-    --lgrey: rgba(198, 155, 123, 1);
-    --red: #F7CCAC;
-    font-size: 14px;
-    --pf: 'PlayBold';
-    --sr: 'SourceReg';
-    line-height: 1;
+	// --dgrey: #3A3845;
+	// --grey: #826F66;
+	// --lgrey: rgba(198, 155, 123, 1);
+	// --red: #F7CCAC;
+
+	--dgrey: #402218;
+	--grey: #865439;
+	--lgrey: #C68B59;
+	--red: #D7B19D;
+
+	font-size: 14px;
+	--pf: "PlayBold";
+	--sr: "SourceReg";
+	line-height: 1;
 }
 
 body {
-    font-family: var(--sr);
-    background: black;
-    overflow-x: hidden;
+	font-family: var(--sr);
+	background: black;
+	overflow-x: hidden;
 }
 
 h1 {
-    margin: 1rem 0;
-    font-family: var(--pf);
+	margin: 1rem 0;
+	font-family: var(--pf);
 }
 
 h2,
 h3,
 h4 {
-    margin: 2rem 0 1rem 0;
-    font-family: var(--pf);
-    line-height: 1;
+	margin: 2rem 0 1rem 0;
+	font-family: var(--pf);
+	line-height: 1;
 }
 
 h2 {
-    margin: 0 0 5rem 0;
-    text-align: center;
-    text-transform: capitalize;
-    font-size: 3rem;
+	margin: 0 0 5rem 0;
+	text-align: center;
+	text-transform: capitalize;
+	font-size: 3rem;
 }
 
 h4 {
-    font-size: 1.2rem;
-    line-height: 1;
+	font-size: 1.2rem;
+	line-height: 1;
 }
 
 .b-dg-container,
 .b-g-container,
 .b-lg-container,
 .b-red-container {
-    padding: 10rem 0;
+	padding: 10rem 0;
 }
 
 .b-dg-container {
-    background: var(--dgrey);
-    color: white;
+	background: var(--dgrey);
+	color: white;
 }
 
 .b-g-container {
-    background: var(--grey);
-    color: white;
+	background: var(--grey);
+	color: white;
 }
 
 .b-lg-container {
-    background: var(--lgrey);
-    color: white;
+	background: var(--lgrey);
+	color: white;
 }
 
 .b-red-container {
-    background: var(--red);
-    color: white;
+	background: var(--red);
+	color: white;
 }
 
 .img-wrapper {
-    position: relative;
-    overflow: hidden;
-    
-    img {
-        width: 100%;
-    }
+	position: relative;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+	}
 }
 
 .b-btn {
-    background: var(--grey);
-    color: var(--lgrey);
-    transition: .3s ease;
-    padding-left: 2rem;
-    padding-right: 2rem;
+	background: var(--grey);
+	color: var(--lgrey);
+	transition: 0.3s ease;
+	padding-left: 2rem;
+	padding-right: 2rem;
 
-    i {
-        color: white;
-    }
+	i {
+		color: white;
+	}
 
-    &:hover {
-        background: var(--red);
-        color: white;
-        transition: .3s ease;
-    }
+	&:hover {
+		background: var(--red);
+		color: white;
+		transition: 0.3s ease;
+	}
 }
 
 .b-close-btn {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: red;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background: red;
 
-    i {
-        font-size: 1rem;
-        color: white;
-        transition: .5s ease-out;
-    }
+	i {
+		font-size: 1rem;
+		color: white;
+		transition: 0.5s ease-out;
+	}
 
-    &:hover i {
-        transform: scale(1.5) rotate(180deg);
-        transition: .5s ease-in;
-    }
+	&:hover i {
+		transform: scale(1.5) rotate(180deg);
+		transition: 0.5s ease-in;
+	}
 }

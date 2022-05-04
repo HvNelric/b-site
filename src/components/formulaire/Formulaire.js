@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import './Formulaire.scss';
 import emailjs from '@emailjs/browser';
 
-const Formulaire = () => {
+const Formulaire = ({offset, isdesktop}) => {
 
     const refForm = useRef();
     const refMail = useRef();
@@ -38,11 +38,11 @@ const Formulaire = () => {
                 <div className="row">
                     <div className="col-12 col-md-4 left-col">
                         <div className='wrapper'>
-                            <i className="fa-solid fa-envelope-circle-check"></i>
-                            <h2>Contactez nous</h2>
+                            <i className="fa-solid fa-envelope-circle-check" style={{transform: `translateY(-${(offset - 2900) * .12})`}}></i>
+                            <h2 style={{ transform: `translateY(-${(offset - 2900) * .1})` }}>Contactez nous</h2>
                         </div>
                     </div>
-                    <div className="col-12 col-md-8 right-col">
+                    <div className="col-12 col-md-8 right-col" style={isdesktop ? {transform: `translateY(${(offset - 2900) * 0.1}px)`} : {transform: 'none'}}>
                         <form onSubmit={sendEmail} ref={refForm}>
                             <div className="mb-3 form-elem">
                                 <label htmlFor="form-email" className="form-label">Votre email</label>
