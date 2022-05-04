@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { getDatabase, ref, set, get, onValue, query, orderByChild } from "firebase/database";
+import { getDatabase, ref, set, onValue, query, orderByChild } from "firebase/database";
 import { getStorage, uploadBytes, ref as fireRef, getDownloadURL, deleteObject } from "firebase/storage";
 import 'firebase/storage'
 import 'firebase/firestore';
@@ -153,7 +153,7 @@ const GestionActus = () => {
                                         <div className="date">{key.date}</div>
                                         <div className="desc">{key.description}</div>
                                         {
-                                            (key.ext && key.ext !== '') && <a className='savoir-plus' href={key.ext} target="_blank">Vers l'article</a>
+                                            (key.ext && key.ext !== '') && <a className='savoir-plus' href={key.ext} target="_blank" rel="noopener noreferrer">Vers l'article</a>
                                         }
                                     </div>
                                     <div className="bottom"></div>

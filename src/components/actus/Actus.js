@@ -1,15 +1,10 @@
-import { ref, getDatabase, query, orderByChild, orderByValue, onValue } from 'firebase/database';
+import { ref, getDatabase, query, orderByChild, onValue } from 'firebase/database';
 import React, { useEffect, useState } from 'react';
 import './Actus.scss';
 import TextTruncate from 'react-text-truncate';
 import Modal from '../modal/Modal';
 
 const Actus = ({offset, isdesktop}) => {
-
-    //const dbRef = ref(getDatabase());
-    const db = getDatabase();
-
-    //const refModal = useRef();
 
     const [actus, setActus] = useState([])
     const [modalActus, setModalActus] = useState({
@@ -21,33 +16,6 @@ const Actus = ({offset, isdesktop}) => {
     });
 
     const { open, img, title, date, desc } = modalActus;
-
-    const goGet = () => {
-
-        const actusRef = query(ref(db, 'actus'), orderByChild('title'));
-        onValue(actusRef, (snapshot) => {
-            const data = snapshot.val();
-            //console.log('SNAP : ', data)
-
-            const orderData = []
-            Object.keys(data)
-            .sort()
-            .reverse()
-            .forEach(item => {
-                orderData.push({
-                    'id': item,
-                    'title': data[item].title,
-                    'imgUrl': data[item].imgUrl,
-                    'description': data[item].description,
-                    'date': data[item].date,
-                    'ext': data[item].ext,
-                    'filename': data[item].filename
-                })
-            })
-            setActus(orderData)    
-        });
-
-    }
 
     const openModal = (img, title, date, desc) => {
         setModalActus({
@@ -80,7 +48,33 @@ const Actus = ({offset, isdesktop}) => {
     }
 
     useEffect(() => {
-        goGet()
+        const db = getDatabase();
+        
+        const goGet = () => {
+            const actusRef = query(ref(db, 'actus'), orderByChild('title'));
+            onValue(actusRef, (snapshot) => {
+                const data = snapshot.val();
+                //console.log('SNAP : ', data) 
+
+                const orderData = []
+                Object.keys(data)
+                    .sort()
+                    .reverse()
+                    .forEach(item => {
+                        orderData.push({
+                            'id': item,
+                            'title': data[item].title,
+                            'imgUrl': data[item].imgUrl,
+                            'description': data[item].description,
+                            'date': data[item].date,
+                            'ext': data[item].ext,
+                            'filename': data[item].filename
+                        })
+                    })
+                setActus(orderData)
+            });
+        }
+        goGet();
         return () => {
             document.body.style.overflow = 'unset';
         }
@@ -111,7 +105,7 @@ const Actus = ({offset, isdesktop}) => {
                                                 truncateText="..."
                                                 text={elem.description}
                                                 textTruncateChild={
-                                                    (elem.ext && elem.ext !== '') ? <a className='savoir-plus' href={elem.ext} target="_blank">Vers l'article</a> : <span className='savoir-plus' onClick={() => openModal(elem.imgUrl, elem.title, elem.date, elem.description)}>Lire plus</span>
+                                                    (elem.ext && elem.ext !== '') ? <a className='savoir-plus' href={elem.ext} target="_blank" rel="noopener noreferrer">Vers l'article</a> : <span className='savoir-plus' onClick={() => openModal(elem.imgUrl, elem.title, elem.date, elem.description)}>Lire plus</span>
                                                 }
                                             />
                                         </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { MyContext } from '../context/MyContext';
 import './Admin.scss'
 import Profil from './profil/Profil';
@@ -9,10 +9,6 @@ const Admin = () => {
 
     const context = useContext(MyContext)
     const { userState } = context
-
-    // useEffect(() => {
-    //     const goTo = window.scrollTo(0, 0)
-    // }, [])
     
     const components = userState.isLog
     ? (

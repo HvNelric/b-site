@@ -6,6 +6,10 @@
 
     .navbar-toggler {
         border: none;
+
+        i {
+            color: var(--red);
+        }
     }
 
     .nav-link {

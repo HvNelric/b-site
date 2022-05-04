@@ -1,25 +1,16 @@
 import { updateProfile } from 'firebase/auth'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext} from 'react'
 import { auth } from '../../../firebase/Firebase'
 import { MyContext } from '../../context/MyContext'
 import './Profil.scss'
 import imgAnon from '../../../img/anon.jpeg'
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
-import { getDatabase, set } from 'firebase/database'
 
 const Profil = () => {
 
     const context = useContext(MyContext)
     const { userState, setLog } = context
     const storage = getStorage();
-    const db = getDatabase();
-
-    // const [user, setUser] = useState({
-    //     pseudo: '',
-    //     img: ''
-    // })
-
-    // const { pseudo, img } = user
 
     const submitImg = e => {
         e.preventDefault()

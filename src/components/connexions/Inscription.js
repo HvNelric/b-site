@@ -34,7 +34,7 @@ const Inscription = () => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, pwd)
         .then((userCredential) => {
-            const user = userCredential.user;
+            //const user = userCredential.user;
             navigate('/godmode')
         })
         .catch((error) => 

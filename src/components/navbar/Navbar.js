@@ -30,17 +30,17 @@ const Navbar = () => {
     const html = userState.isLog
         ? (
             <>
-                <Link className='nav-link' to='/godmode'>
+                <NavLink className='nav-link' to='/godmode'>
                     <div className="user-info">
                         <strong>{user.displayName}&nbsp;|&nbsp;</strong>{user.email}
                     </div>
-                </Link>
+                </NavLink>
                 <button onClick={logout} className='btn btn-danger'><i className="fa-solid fa-right-from-bracket"></i></button>    
             </>
         ) : (
             <>
                 <li className="nav-item">
-                    <Link className="nav-link active" to='/inscription'>Inscription</Link>
+                    <NavLink className="nav-link active" to='/inscription'>Inscription</NavLink>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to='/login'>Login</Link>
@@ -51,7 +51,7 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-md navbar-dark b-nav-container">
             <div className="container-fluid">
-                <Link className="navbar-brand" to='/'>Bastos Auto-école</Link>
+                <NavLink className="navbar-brand" to='/'>Bastos Auto-école</NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i className="fa-solid fa-ellipsis-vertical"></i>
                 </button>

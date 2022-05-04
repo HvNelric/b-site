@@ -1,8 +1,6 @@
-import { updateProfile } from 'firebase/auth';
-import { set, ref as dataRef, getDatabase, get, child } from 'firebase/database';
+import { set, ref as dataRef, getDatabase, get } from 'firebase/database';
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import React, { useEffect, useState } from 'react'
-import { auth } from '../../../firebase/Firebase';
 import './GestionEquipe.scss'
 
 const GestionEquipe = () => {

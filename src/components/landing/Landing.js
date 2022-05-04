@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Actus from '../actus/Actus';
 import Equipe from '../equipe/Equipe';
 import Formulaire from '../formulaire/Formulaire';
 import imgLanding from '../../img/img41.jpg'
 import './Landing.scss'
+import Contact from '../contact/Contact';
 
 const Landing = () => {
 
@@ -17,13 +18,11 @@ const Landing = () => {
 
     const handleResize = () => {
         const width = window.screen.width;
-        //console.log('resize', )
         if (width < 992) {
             setIsdesktop(false)
         } else {
             setIsdesktop(true)
-        }
-        
+        }  
     }
 
     useEffect(() => {
@@ -60,7 +59,8 @@ const Landing = () => {
             </div>
             <Actus offset={offset} isdesktop={isdesktop} />
             <Equipe offset={offset} isdesktop={isdesktop} />
-            <Formulaire offset={offset} isdesktop={isdesktop } />
+            <Formulaire offset={offset} isdesktop={isdesktop} />
+            <Contact />
         </>
     )
 }

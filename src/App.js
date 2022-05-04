@@ -21,16 +21,17 @@ function App() {
     })
 
     useEffect(() => {
-        const authCange = onAuthStateChanged(auth, (user) => {
+        const authChange = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setLog({
-                    ...userState,
+                    //...userState,
                     isLog: true,
                     info: user
                 })
             }
         });
-        return () => authCange;
+        authChange();
+        return () => authChange;
     }, [])
 
     return (

@@ -8,6 +8,10 @@
 			color: red;
 		}
 
+        ::placeholder {
+            color: var(--red);
+        }
+
 		input,
 		textarea {
 			background: var(--dgrey);
