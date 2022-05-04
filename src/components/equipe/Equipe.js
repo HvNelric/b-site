@@ -16,7 +16,7 @@ const Equipe = ({offset, isdesktop}) => {
         const actusRef = dataRef(db, 'equipe');
         onValue(actusRef, (snapshot) => {
             const data = snapshot.val();
-            console.log('SNAP : ', data)
+            //console.log('SNAP : ', data)
 
             // const orderData = []
             // Object.keys(data)
@@ -41,7 +41,7 @@ const Equipe = ({offset, isdesktop}) => {
         goGet()
     }, [])
 
-    console.log('equipe desk', isdesktop)
+    //console.log('equipe desk', isdesktop)
 
     return (
         <div id="equipe" className="container-fluid b-g-container b-equipe">

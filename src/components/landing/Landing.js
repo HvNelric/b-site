@@ -58,7 +58,7 @@ const Landing = () => {
                     </div>
                 </div>
             </div>
-            <Actus offset={offset} />
+            <Actus offset={offset} isdesktop={isdesktop} />
             <Equipe offset={offset} isdesktop={isdesktop} />
             <Formulaire offset={offset} isdesktop={isdesktop } />
         </>

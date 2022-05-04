@@ -4,7 +4,7 @@ import './Actus.scss';
 import TextTruncate from 'react-text-truncate';
 import Modal from '../modal/Modal';
 
-const Actus = () => {
+const Actus = ({offset, isdesktop}) => {
 
     //const dbRef = ref(getDatabase());
     const db = getDatabase();
@@ -93,8 +93,8 @@ const Actus = () => {
                     <h2>Les dernières actualités</h2>
                     <div className="row actus-elem">
                         {
-                            actus.map(elem => (
-                                <div className='col-12 col-md-6 col-lg-4 elem-col' key={elem.id}>
+                            actus.map((elem, index) => (
+                                <div className='col-12 col-md-6 col-lg-4 elem-col' key={elem.id} style={isdesktop ? ((index % 2 === 0) ? { transform: `translateY(-${(offset - 1100) * 0.12}px)` } : { transform: `translateY(${(offset - 1100) * 0.12}px)`}) : ({transform: 'none'})}>
                                     <div className='actu-wrapper'>
                                         <div className="top">
                                             <div className="img-wrapper">
