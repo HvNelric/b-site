@@ -103,7 +103,7 @@ const Actus = () => {
                                         </div>
                                         <div className="middle">
                                             <h4>{elem.title}</h4>
-                                            <div className="date">{elem.date}</div>
+                                            <div className="date"><i className="fa-solid fa-calendar"></i>  {elem.date}</div>
                                             <TextTruncate
                                                 className="desc"
                                                 line={4}

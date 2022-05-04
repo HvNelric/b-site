@@ -1,62 +1,66 @@
 .b-landing {
-    width: 100%;
-    height: 100vh;
-    position: relative;
+	width: 100%;
+	height: 700px;
+	position: relative;
 
-    h1 {
-        position: absolute;
-        top: 25%;
-        left: 50%;
-        transform: translateX(-50%);
-        color: var(--red);
-        font-size: 4.5rem;
-        text-align: center;
-        line-height: 1;
-        text-shadow: 1px 1px 10px #000000;
+	h1 {
+		position: absolute;
+		top: 25%;
+		left: 50%;
+		transform: translateX(-50%);
+		color: var(--red);
+		font-size: 4.5rem;
+		text-align: center;
+		line-height: 1;
+		text-shadow: 1px 1px 10px #000000;
 
-        // .title-bis {
-        //     font-family: var(--sr);
-        // }
-    }
+		// .title-bis {
+		//     font-family: var(--sr);
+		// }
+	}
 
-    .landing-etape {
-        position: absolute;
-        bottom: 25%;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 80%;
+	.landing-etape {
+		position: absolute;
+		bottom: 15%;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 95%;
 
-        i {
-            color: white;
-            font-size: 1rem;
-        }
+		i {
+			color: white;
+			font-size: 1rem;
+		}
 
-        .elem {
-            background: rgba(198, 155, 123, .5);
-            color: white;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-
+		.elem {
+			background: rgba(198, 155, 123, 0.5);
+			color: white;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
 }
 
 @media (min-width: 768px) {
-    .b-landing .landing-etape {
-        width: 60%;
-    }
+	.b-landing .landing-etape {
+		width: 60%;
+	}
 }
 
 @media (min-width: 1200px) {
-    .b-landing .landing-etape {
-        width: 40%;
-    }
+	.b-landing {
+        height: 100vh;
+
+		.landing-etape {
+            bottom: 25%;
+			width: 40%;
+		}
+	}
 }

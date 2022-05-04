@@ -1,5 +1,5 @@
 .actus-elem {
-	margin: 0 -30px;
+	//margin: 0 -30px;
 
 	.elem-col {
 		margin-bottom: 60px;
@@ -17,7 +17,7 @@
 				position: relative;
 
 				.img-wrapper {
-					height: 250px;
+					height: 200px;
 				}
 			}
 
@@ -46,6 +46,10 @@
 					color: #e1e1e1;
 					text-align: right;
 					margin: 1rem 0;
+
+                    i {
+                        margin-right: .5rem;
+                    }
 				}
 
 				.desc {
@@ -148,6 +152,8 @@
 
 @media (min-width: 768px) {
 	.actus-elem {
+        margin: 0 -30px;
+
 		.elem-col {
 			.actu-wrapper {
 				.top {
