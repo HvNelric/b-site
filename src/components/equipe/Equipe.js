@@ -1,11 +1,10 @@
-import { get, getDatabase, ref as dataRef } from 'firebase/database';
+import { get, getDatabase, onValue, ref as dataRef } from 'firebase/database';
 import React, { useEffect, useState } from 'react';
 import './Equipe.scss';
 
 const Equipe = () => {
 
-    const dbRef = dataRef(getDatabase());
-
+    const db = getDatabase();
     const [user, setUser] = useState({
         user1: {},
         user2: {},
@@ -14,16 +13,27 @@ const Equipe = () => {
     })
 
     const goGet = () => {
-        get(
-            dbRef, 'equipe/'
-        ).then((snapshot) => {
-            if (snapshot.exists()) {
-                setUser(snapshot.val().equipe)
-            } else {
-                console.log("No data available");
-            }
-        }).catch((error) => {
-            console.error(error);
+        const actusRef = dataRef(db, 'equipe');
+        onValue(actusRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log('SNAP : ', data)
+
+            // const orderData = []
+            // Object.keys(data)
+            //     .sort()
+            //     .reverse()
+            //     .forEach(item => {
+            //         orderData.push({
+            //             'id': item,
+            //             'title': data[item].title,
+            //             'imgUrl': data[item].imgUrl,
+            //             'description': data[item].description,
+            //             'date': data[item].date,
+            //             'ext': data[item].ext,
+            //             'filename': data[item].filename
+            //         })
+            //     })
+            setUser(data)
         });
     }
 

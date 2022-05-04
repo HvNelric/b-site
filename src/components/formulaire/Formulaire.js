@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './Formulaire.scss';
 import emailjs from '@emailjs/browser';
 
@@ -10,13 +10,23 @@ const Formulaire = () => {
     const refTel = useRef();
     const refComment = useRef();
 
+    const [success, setSuccess] = useState(false)
+
+    const fnSuccess = () => {
+        setSuccess(true);
+        setTimeout(() => {
+            setSuccess(false);
+        }, 5000)
+    }
+
     const sendEmail = (e) => {
         e.preventDefault();
 
         emailjs.sendForm('service_7p38bvd', 'template_l5aepgo', refForm.current, 'PZlTJrISTGSw-qV1n')
             .then((result) => {
                 console.log(result.text);
-                
+                e.target.reset()
+                fnSuccess();
             }, (error) => {
                 console.log(error.text);
             });
@@ -57,6 +67,18 @@ const Formulaire = () => {
                     </div>
                 </div>
             </div>
+            {
+                success && (
+                    <div className="success-wrapper">
+                        <div className="icon">
+                            <i className="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div className="success-msg">
+                            Votre message a bien été envoyé.
+                        </div>
+                    </div>
+                )
+            }
         </div>
     )
 }

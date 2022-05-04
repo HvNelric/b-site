@@ -11,7 +11,7 @@ const Actus = () => {
 
     //const refModal = useRef();
 
-    const [actus, setActus] = useState({})
+    const [actus, setActus] = useState([])
     const [modalActus, setModalActus] = useState({
         open: false,
         img: '',
@@ -24,31 +24,29 @@ const Actus = () => {
 
     const goGet = () => {
 
-        const actusRef = query(ref(db, 'actus'), orderByValue('date'));
+        const actusRef = query(ref(db, 'actus'), orderByChild('title'));
         onValue(actusRef, (snapshot) => {
             const data = snapshot.val();
-            console.log('SNAP : ', data)
-            setActus(data)    
+            //console.log('SNAP : ', data)
+
+            const orderData = []
+            Object.keys(data)
+            .sort()
+            .reverse()
+            .forEach(item => {
+                orderData.push({
+                    'id': item,
+                    'title': data[item].title,
+                    'imgUrl': data[item].imgUrl,
+                    'description': data[item].description,
+                    'date': data[item].date,
+                    'ext': data[item].ext,
+                    'filename': data[item].filename
+                })
+            })
+            setActus(orderData)    
         });
 
-        // get(
-        //     dbRef, 'actus'
-        // ).then((snapshot) => {
-        //     if (snapshot.exists()) {
-        //         console.log('SNAP : ', snapshot.val().actus)
-
-        //         //////////////////////////////////////////////
-
-                
-        //         //////////////////////////////////////////////
-
-        //         setActus(snapshot.val().actus)
-        //     } else {
-        //         console.log("No actus available");
-        //     }
-        // }).catch((error) => {
-        //     console.error(error);
-        // });
     }
 
     const openModal = (img, title, date, desc) => {
@@ -88,8 +86,6 @@ const Actus = () => {
         }
     }, [])
 
-    console.log('ACTUS : ', actus)
-
     return (
         <>
             <div id='actus' className="container-fluid b-dg-container b-actus">
@@ -97,25 +93,25 @@ const Actus = () => {
                     <h2>Les dernières actualités</h2>
                     <div className="row actus-elem">
                         {
-                            Object.keys(actus).map(key => (
-                                <div className='col-12 col-md-4 elem-col' key={key}>
+                            actus.map(elem => (
+                                <div className='col-12 col-md-6 col-lg-4 elem-col' key={elem.id}>
                                     <div className='actu-wrapper'>
                                         <div className="top">
                                             <div className="img-wrapper">
-                                                <img src={actus[key].imgUrl} alt={actus[key].title} />
+                                                <img src={elem.imgUrl} alt={elem.title} />
                                             </div>
                                         </div>
                                         <div className="middle">
-                                            <h4>{actus[key].title}</h4>
-                                            <div className="date">{actus[key].date}</div>
+                                            <h4>{elem.title}</h4>
+                                            <div className="date">{elem.date}</div>
                                             <TextTruncate
                                                 className="desc"
                                                 line={4}
                                                 element="div"
-                                                truncateText="…"
-                                                text={actus[key].description}
+                                                truncateText="..."
+                                                text={elem.description}
                                                 textTruncateChild={
-                                                    (actus[key].ext && actus[key].ext !== '') ? <span className='savoir-plus' href={actus[key].ext}target="_blank">Vers l'article</span> : <span className='savoir-plus' onClick={() => openModal(actus[key].imgUrl, actus[key].title, actus[key].date, actus[key].description)}>Lire plus</span>
+                                                    (elem.ext && elem.ext !== '') ? <a className='savoir-plus' href={elem.ext} target="_blank">Vers l'article</a> : <span className='savoir-plus' onClick={() => openModal(elem.imgUrl, elem.title, elem.date, elem.description)}>Lire plus</span>
                                                 }
                                             />
                                         </div>

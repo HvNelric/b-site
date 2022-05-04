@@ -2,7 +2,7 @@
 	margin: 0 -30px;
 
 	.elem-col {
-		margin-bottom: 40px;
+		margin-bottom: 60px;
 		padding-left: 30px;
 		padding-right: 30px;
 
@@ -17,13 +17,14 @@
 				position: relative;
 
 				.img-wrapper {
-					height: 180px;
+					height: 250px;
 				}
 			}
 
 			.middle {
 				padding: 2rem 1rem 1rem 1rem;
 				position: relative;
+				height: 195px;
 
 				h4 {
 					background: var(--red);
@@ -33,10 +34,12 @@
 					left: -1rem;
 					transform: translateY(-50%);
 					margin: 0;
-					max-height: 50px;
+					height: 30px;
 					width: 90%;
 					overflow: hidden;
 					color: black;
+					text-overflow: ellipsis;
+					white-space: nowrap;
 				}
 
 				.date {
@@ -141,4 +144,38 @@
 			}
 		}
 	}
+}
+
+@media (min-width: 768px) {
+	.actus-elem {
+		.elem-col {
+			.actu-wrapper {
+				.top {
+					.img-wrapper {
+						height: 180px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+
+		.modal-container {
+			.b-modal {
+				position: relative;
+				width: 800px;
+				max-height: 800px;
+				background: var(--dgrey);
+
+				.modal-wrapper {
+					max-height: 800px;
+
+					.img-wrapper {
+						height: 250px;
+					}
+				}
+			}
+		}
 }

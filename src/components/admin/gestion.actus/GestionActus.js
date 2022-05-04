@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { getDatabase, ref, set, get } from "firebase/database";
+import { getDatabase, ref, set, get, onValue, query, orderByChild } from "firebase/database";
 import { getStorage, uploadBytes, ref as fireRef, getDownloadURL, deleteObject } from "firebase/storage";
 import 'firebase/storage'
 import 'firebase/firestore';
 import './GestionActus.scss';
-import TextTruncate from 'react-text-truncate';
 
 const GestionActus = () => {
 
@@ -13,13 +12,12 @@ const GestionActus = () => {
     const refDesc = useRef();
     const refFile = useRef();
     const refExt = useRef();
-    const refTruncate = useRef();
+    const refButton = useRef();
 
     const db = getDatabase();
-    const dbRef = ref(getDatabase());
     const storage = getStorage();
 
-    const [data, setData] = useState({})
+    const [data, setData] = useState([])
 
     const submitActu = e => {
         e.preventDefault()
@@ -29,7 +27,7 @@ const GestionActus = () => {
         const storageRef = fireRef(storage, `actus/${file.name}`);
 
         const formatDate = new Date(refDate.current.value);
-        const newDate = `${formatDate.getDate() < 9 ? '0' + formatDate.getDate() : formatDate.getDate()}-${(formatDate.getMonth() + 1) < 9 ? '0' + formatDate.getMonth() : formatDate.getMonth()}-${formatDate.getFullYear()}`
+        const newDate = `${formatDate.getDate() < 9 ? '0' + formatDate.getDate() : formatDate.getDate()}.${(formatDate.getMonth() + 1) < 9 ? '0' + formatDate.getMonth() : formatDate.getMonth()}.${formatDate.getFullYear()}`
 
         uploadBytes(storageRef, file)
             .then((snapshot) => {
@@ -78,21 +76,34 @@ const GestionActus = () => {
     }
 
     const goGet = () => {
-        get(
-            dbRef, 'actus/'
-        ).then((snapshot) => {
-            if (snapshot.exists()) {
-                setData(snapshot.val().actus)
-            } else {
-                console.log("No data available");
-            }
-        }).catch((error) => {
-            console.error(error);
+
+        const actusRef = query(ref(db, 'actus'), orderByChild('title'));
+        onValue(actusRef, (snapshot) => {
+            const data = snapshot.val();
+            //console.log('SNAP : ', data)
+
+            const orderData = []
+            Object.keys(data)
+                .sort()
+                .reverse()
+                .forEach(item => {
+                    orderData.push({
+                        'id': item,
+                        'title': data[item].title,
+                        'imgUrl': data[item].imgUrl,
+                        'description': data[item].description,
+                        'date': data[item].date,
+                        'ext': data[item].ext,
+                        'filename': data[item].filename
+                    })
+                })
+            setData(orderData)
         });
+
     }
 
     useEffect(() => {
-        goGet()
+        goGet();
     }, []);
 
     return (
@@ -122,27 +133,27 @@ const GestionActus = () => {
                                 <label htmlFor="ext-link" className="form-label">Lien externe (optionnel)</label>
                                 <input ref={refExt} type="text" className="form-control" id="ext-link" />
                             </div>
-                            <button className="btn b-btn"><i className="fa-solid fa-arrow-right"></i></button>
+                            <button ref={refButton} className="btn b-btn"><i className="fa-solid fa-arrow-right"></i></button>
                         </form>
                     </div>
                 </div>
                 <div className="row gestion-elem">
                     {
-                        Object.keys(data).map(key => (
-                            <div className='col-12 col-md-4 elem-col' key={key}>
+                        data.map(key => (
+                            <div className='col-12 col-md-4 elem-col' key={key.id}>
                                 <div className='actu-wrapper'>
                                     <div className="top">
                                         <div className="img-wrapper">
-                                            <img src={data[key].imgUrl} alt="car" />
+                                            <img src={key.imgUrl} alt="car" />
                                         </div>
-                                        <div onClick={() => deleteElem(key, data[key].fileName)} className='delete-btn'><i className="fa-solid fa-xmark"></i></div>
+                                        <div onClick={() => deleteElem(key.id, key.fileName)} className='delete-btn'><i className="fa-solid fa-xmark"></i></div>
                                     </div>
                                     <div className="middle">
-                                        <h4>{data[key].title}</h4>
-                                        <div className="date">{data[key].date}</div>
-                                        <div className="desc">{data[key].description}</div>
+                                        <h4>{key.title}</h4>
+                                        <div className="date">{key.date}</div>
+                                        <div className="desc">{key.description}</div>
                                         {
-                                            (data[key].ext && data[key].ext !== '') && <a className='savoir-plus' href={data[key].ext} target="_blank">Vers l'article</a>
+                                            (key.ext && key.ext !== '') && <a className='savoir-plus' href={key.ext} target="_blank">Vers l'article</a>
                                         }
                                     </div>
                                     <div className="bottom"></div>
