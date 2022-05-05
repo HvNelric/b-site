@@ -80,12 +80,18 @@
 	}
 }
 
-// @media (min-width: 992px) {
-// 	.b-equipe {
-// 		.row {
-// 			.user-col {
-//                 transform: translateY() !important;
-// 			}
-// 		}
-// 	}
-// }
+@media (min-width: 1200px) {
+	.b-equipe {
+		.user-col {
+			.user-wrapper {
+				.equipe-content {
+					ul {
+						li:hover {
+                            background: rgba(198, 155, 123, 1);
+						}
+					}
+				}
+			}
+		}
+	}
+}

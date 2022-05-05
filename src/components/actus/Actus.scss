@@ -47,9 +47,9 @@
 					text-align: right;
 					margin: 1rem 0;
 
-                    i {
-                        margin-right: .5rem;
-                    }
+					i {
+						margin-right: 0.5rem;
+					}
 				}
 
 				.desc {
@@ -152,7 +152,7 @@
 
 @media (min-width: 768px) {
 	.actus-elem {
-        margin: 0 -30px;
+		margin: 0 -30px;
 
 		.elem-col {
 			.actu-wrapper {
@@ -168,20 +168,33 @@
 
 @media (min-width: 1200px) {
 
-		.modal-container {
-			.b-modal {
-				position: relative;
-				width: 800px;
-				max-height: 800px;
-				background: var(--dgrey);
+	.actus-elem {
 
-				.modal-wrapper {
-					max-height: 800px;
-
+		.elem-col {
+			.actu-wrapper {
+				.top {
 					.img-wrapper {
-						height: 250px;
+						height: 220px;
 					}
 				}
 			}
 		}
+	}
+
+	.modal-container {
+		.b-modal {
+			position: relative;
+			width: 800px;
+			max-height: 800px;
+			background: var(--dgrey);
+
+			.modal-wrapper {
+				max-height: 800px;
+
+				.img-wrapper {
+					height: 250px;
+				}
+			}
+		}
+	}
 }
